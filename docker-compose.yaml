@@ -10,12 +10,12 @@ services:
       - PGID=1000
       - TZ=PST
       - PASSWORD=password #optional
-      - HASHED_PASSWORD= #optional
       - SUDO_PASSWORD=password #optional
-      - SUDO_PASSWORD_HASH= #optional
-      - PROXY_DOMAIN=code-server.my.domain #optional
-      - DEFAULT_WORKSPACE=/config/workspace #optional
+      - DEFAULT_WORKSPACE=/git #optional
+      # Docker mods from: https://mods.linuxserver.io/?mod=code-server
+      - DOCKER_MODS=linuxserver/mods:code-server-python3|linuxserver/mods:code-server-nodejs|linuxserver/mods:universal-docker
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /home/shane/appdata/config:/config
       - /home/shane/code:/git
     ports:
